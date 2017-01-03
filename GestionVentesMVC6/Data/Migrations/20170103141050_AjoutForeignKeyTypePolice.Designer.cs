@@ -8,9 +8,10 @@ using GestionVentesMVC6.Data;
 namespace GestionVentesMVC6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170103141050_AjoutForeignKeyTypePolice")]
+    partial class AjoutForeignKeyTypePolice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -97,8 +98,7 @@ namespace GestionVentesMVC6.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nom")
-                        .IsRequired();
+                    b.Property<string>("Nom");
 
                     b.HasKey("ID");
 
@@ -124,34 +124,13 @@ namespace GestionVentesMVC6.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Client")
-                        .IsRequired();
-
-                    b.Property<int>("CompagnieID");
-
-                    b.Property<DateTime>("DateVente");
-
-                    b.Property<double>("MontantPrimeTotal");
-
-                    b.Property<double>("PourcentageCommission");
-
-                    b.Property<string>("Reference");
-
                     b.Property<int>("TypeAssuranceID");
 
                     b.Property<int>("TypePoliceID");
 
-                    b.Property<int>("VendeurID");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("CompagnieID");
-
-                    b.HasIndex("TypeAssuranceID");
-
                     b.HasIndex("TypePoliceID");
-
-                    b.HasIndex("VendeurID");
 
                     b.ToTable("Vente");
                 });
@@ -265,24 +244,9 @@ namespace GestionVentesMVC6.Data.Migrations
 
             modelBuilder.Entity("GestionVentesMVC6.Models.Vente", b =>
                 {
-                    b.HasOne("GestionVentesMVC6.Models.Compagnie", "Compagnie")
-                        .WithMany()
-                        .HasForeignKey("CompagnieID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GestionVentesMVC6.Models.TypeAssurance", "TypeAssurance")
-                        .WithMany()
-                        .HasForeignKey("TypeAssuranceID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("GestionVentesMVC6.Models.TypePolice", "TypePolice")
                         .WithMany()
                         .HasForeignKey("TypePoliceID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GestionVentesMVC6.Models.Vendeur", "Vendeur")
-                        .WithMany()
-                        .HasForeignKey("VendeurID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GestionVentesMVC6.Data;
+using GestionVentesMVC6.Models;
+using GestionVentesMVC6.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using GestionVentesMVC6.Data;
-using GestionVentesMVC6.Models;
-using GestionVentesMVC6.Services;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace GestionVentesMVC6
 {
@@ -64,6 +63,20 @@ namespace GestionVentesMVC6
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            // Configure the localization options
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(new CultureInfo("en-CA")),
+                SupportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en-CA")
+                },
+                SupportedUICultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en-CA")
+                }
+            });
 
             app.UseApplicationInsightsRequestTelemetry();
 

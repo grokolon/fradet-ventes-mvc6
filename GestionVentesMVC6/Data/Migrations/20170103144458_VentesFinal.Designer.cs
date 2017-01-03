@@ -8,9 +8,10 @@ using GestionVentesMVC6.Data;
 namespace GestionVentesMVC6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170103144458_VentesFinal")]
+    partial class VentesFinal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -97,8 +98,7 @@ namespace GestionVentesMVC6.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nom")
-                        .IsRequired();
+                    b.Property<string>("Nom");
 
                     b.HasKey("ID");
 

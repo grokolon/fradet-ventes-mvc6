@@ -30,5 +30,7 @@ namespace GestionVentesMVC6.Data
         public DbSet<TypeAssurance> TypeAssurance { get; set; }
 
         public DbSet<Compagnie> Compagnie { get; set; }
+
+        public DbSet<Vente> Vente { get; set; }
     }
 }
