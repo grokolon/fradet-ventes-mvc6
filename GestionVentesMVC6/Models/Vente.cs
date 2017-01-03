@@ -42,15 +42,16 @@ namespace GestionVentesMVC6.Models
         public string Client { get; set; }
 
         [Required]
-        [Display(Name = "Montant total de la prime")]
+        [Display(Name = "Prime")]
         [DataType(DataType.Currency)]
         public double MontantPrimeTotal { get; set; }
 
-        [Display(Name = "Pourcentage de commission")]
-        [DisplayFormat(DataFormatString = "{0:P2}", ApplyFormatInEditMode = true)]
+        [Display(Name = "% de commission")]
+        [Range(0.0, 100.0)]
         public double PourcentageCommission { get; set; }
 
         [Display(Name = "Date de vente")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateVente { get; set; }
 
         [Display(Name = "Référence")]
